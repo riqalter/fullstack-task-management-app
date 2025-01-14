@@ -184,6 +184,16 @@ function App() {
                 >
                   Task List
                 </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: theme.palette.text.secondary,
+                    mb: 3,
+                    textAlign: 'center',
+                  }}
+                >
+                  Tekan tombol refresh untuk memuat ulang data jika sudah di tambahkan atau di edit
+                </Typography>
                 <TaskList onEditTask={handleEditTask} />
               </Paper>
             </Fade>
