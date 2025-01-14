@@ -10,7 +10,6 @@ import {
   useTheme,
   Card,
   CardContent,
-  LinearProgress,
 } from '@mui/material';
 import EmailIcon from '@mui/icons-material/Email';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -20,50 +19,34 @@ const teamMembers = [
       id: 1,
       name: 'Muhammad Raihan',
       role: 'Team Lead',
-      avatar: '/images/raihan-profile.PNG',
-      email: 'raihan@company.com',
-      linkedin: '#',
-      tasks: {
-        completed: 15,
-        total: 20
-      },
-      expertise: ['Frontend', 'UI/UX', 'React'],
-      activeProjects: 3
+      avatar: '/images/raihan-profile.png',
+      email: 'mailto:mr.muhraihan@gmail.com',
+      linkedin: 'https://www.linkedin.com/in/muhammadraihan22/',
+      expertise: ['Project Management', 'UI/UX', 'Team Leadership']
     },
   {
     id: 2,
     name: 'Harry Mardika',
-    role: 'Senior Developer',
-    avatar: '/images/harry.JPEG',
-    email: 'michael.c@company.com',
-    linkedin: '#',
-    tasks: {
-      completed: 12,
-      total: 18
-    },
-    expertise: ['Backend', 'Database', 'API'],
-    activeProjects: 4
+    role: 'Developer',
+    avatar: '/images/harry.jpeg',
+    email: 'mailto:harrymardika@student.gunadarma.ac.id',
+    linkedin: 'https://www.linkedin.com/in/harry-mardika/',
+    expertise: ['Backend', 'Machine Learning Engineer', 'Data Scientist']
   },
   {
     id: 3,
     name: 'Mikail Thoriq',
-    role: 'UX Designer',
-    avatar: '/images/thoriq.JPEG',
-    email: 'emily.r@company.com',
-    linkedin: '#',
-    tasks: {
-      completed: 8,
-      total: 12
-    },
-    expertise: ['Design', 'Prototyping', 'User Research'],
-    activeProjects: 2
+    role: 'Cloud Engineer',
+    avatar: '/images/thoriq.jpeg',
+    email: 'mailto:mikailthoriq@student.gunadarma.ac.id',
+    linkedin: 'https://www.linkedin.com/in/mikailthoriq/',
+    expertise: ['Backend', 'Cloud Platform', 'Machine Learning Engineer']
   },
   // Add more team members as needed
 ];
 
 const TeamMemberCard = ({ member }) => {
   const theme = useTheme();
-  const completionPercentage = (member.tasks.completed / member.tasks.total) * 100;
 
   return (
     <Card
@@ -93,35 +76,26 @@ const TeamMemberCard = ({ member }) => {
             <Typography variant="h6" sx={{ fontWeight: 600 }}>{member.name}</Typography>
             <Typography variant="body2" color="text.secondary">{member.role}</Typography>
             <Box sx={{ mt: 1 }}>
-              <IconButton size="small" sx={{ color: theme.palette.primary.light }}>
+              <IconButton 
+                size="small" 
+                sx={{ color: theme.palette.primary.light }}
+                href={member.email}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <EmailIcon />
               </IconButton>
-              <IconButton size="small" sx={{ color: theme.palette.primary.light }}>
+              <IconButton 
+                size="small" 
+                sx={{ color: theme.palette.primary.light }}
+                href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <LinkedInIcon />
               </IconButton>
             </Box>
           </Box>
-        </Box>
-
-        <Box sx={{ mb: 2 }}>
-          <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-            Task Completion
-          </Typography>
-          <LinearProgress
-            variant="determinate"
-            value={completionPercentage}
-            sx={{
-              height: 8,
-              borderRadius: 4,
-              backgroundColor: 'rgba(255,255,255,0.1)',
-              '& .MuiLinearProgress-bar': {
-                backgroundColor: theme.palette.primary.main,
-              }
-            }}
-          />
-          <Typography variant="caption" color="text.secondary" sx={{ mt: 0.5, display: 'block' }}>
-            {member.tasks.completed} of {member.tasks.total} tasks completed
-          </Typography>
         </Box>
 
         <Box sx={{ mb: 2 }}>
@@ -142,12 +116,6 @@ const TeamMemberCard = ({ member }) => {
               />
             ))}
           </Box>
-        </Box>
-
-        <Box>
-          <Typography variant="body2" color="text.secondary">
-            Active Projects: {member.activeProjects}
-          </Typography>
         </Box>
       </CardContent>
     </Card>
